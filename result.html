@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+</head>
+<body>
+    <h1>Quiz Results</h1>
+    <p>Your score: {{ score }} / {{ total }}</p>
+
+    <ul>
+        {% for result in results %}
+        <li>
+            <strong>{{ result['question'] }}</strong><br>
+            Your answer: {{ result['user_answer'] }}<br>
+            Correct answer: {{ result['correct_answer_text'] }}<br>
+            {% if result['is_correct'] %}
+            <span style="color: green;">Correct</span>
+            {% else %}
+            <span style="color: red;">Incorrect</span>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+
+    <a href="/restart">Restart Quiz</a>
+</body>
+</html>
